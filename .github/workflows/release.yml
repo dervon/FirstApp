@@ -26,3 +26,13 @@ jobs:
         uses: android-actions/setup-android@v3
       - name: Build SampleApplication
         run: ./gradlew --no-daemon build
+
+    - name: Setup Debug Session
+      uses: csexton/debugger-action@master
+   
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.3
+      with:
+        name: upload
+        path: upload
+
