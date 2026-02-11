@@ -11,6 +11,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: install tmate
+        run:   sudo apt-get install -y tmate openssh-client > /tmp/apt-get.log
+      - name:  Generate ssh key if needed
+        run: [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+      - name: show tmate message
+        run: tmate show-messages
       - name: Checkout sources
         uses: actions/checkout@v4
       - name: Setup Java
