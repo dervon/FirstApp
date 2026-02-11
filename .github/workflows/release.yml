@@ -14,9 +14,9 @@ jobs:
       - name: install tmate
         run: |
           export DEBIAN_FRONTEND=noninteractive
-          sudo apt-get install -y tmate openssh-client > /tmp/apt-get.log
+          sudo apt-get install -y tmate openssh-client
           # Generate ssh key if needed
-          run: [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+          [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
           tmate show-messages
       - name: Checkout sources
         uses: actions/checkout@v4
