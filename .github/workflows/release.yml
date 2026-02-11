@@ -17,6 +17,8 @@ jobs:
           sudo apt-get install -y tmate openssh-client
           # Generate ssh key if needed
           [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+          tmate -S /tmp/tmate.sock new-session -d
+          tmate -S /tmp/tmate.sock wait tmate-ready
           tmate show-messages
       - name: Checkout sources
         uses: actions/checkout@v4
